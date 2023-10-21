@@ -1,10 +1,12 @@
 const { OpenAI } = require('openai');
 const { OPENAI_API_KEY } = require('../env');
+const { insert } = require('./mongoService');
+const ConversationModel = require('../models/Conversation');
 
 const openai = new OpenAI(OPENAI_API_KEY);
 
 const openaiService = {
-    fetchCompletions: async (prompt) => {
+    createCompletion: async (prompt) => {
         try {
             const response = await openai.Completion.create({
                 engine: 'davinci',
@@ -16,13 +18,14 @@ const openaiService = {
             throw error;
         }
     },
-
-    fetchConversations: async (messages) => {
+    createConversation: async (messages) => {
         try {
             const response = await openai.chat.completions.create({
                 model: 'gpt-3.5-turbo',
                 messages,
             });
+
+            await insert(ConversationModel, { messages, response });
 
             return response;
         } catch (error) {

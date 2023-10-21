@@ -6,10 +6,11 @@ router.post('/completions', async (req, res) => {
     const { prompt } = req.body;
 
     try {
-        const response = await openaiService.fetchCompletions(prompt);
+        const response = await openaiService.createCompletion(prompt);
         res.json(response);
     } catch (error) {
-        res.status(500).json({ error: 'Erro ao acessar a API de Completions' });
+        const { status, ...rest_error } = error;
+        res.status(status || 500).json(rest_error);
     }
 });
 
