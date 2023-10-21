@@ -32,23 +32,23 @@ const openaiService = {
             throw error
         }
     },
-    mountConversationPrompt: (message) => {
+    mountConversationPrompt: (messages) => {
         const systemMessage = {
             role: 'system',
             content: 'Você é um assistente de bate-papo.',
         }
 
-        const userMessage = {
+        const userMessages = messages.map(message => ({
             role: 'user',
             content: message,
-        }
+        }))
 
         const assistantMessage = {
             role: 'assistant',
             content: 'Por que o frango atravessou a rua?',
         }
 
-        return [systemMessage, userMessage, assistantMessage]
+        return userMessages.concat([systemMessage, assistantMessage])
     },
 }
 
