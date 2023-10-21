@@ -3,10 +3,11 @@ const router = express.Router();
 const openaiService = require('../services/openaiService');
 
 router.post('/', async (req, res) => {
-    const { messages } = req.body;
+    const { message } = req.body;
 
     try {
-        const response = await openaiService.createConversation(messages);
+        const prompt = openaiService.mountConversationPrompt(message);
+        const response = await openaiService.createConversation(prompt);
         res.json(response);
     } catch (error) {
         const { status, ...rest_error } = error;
