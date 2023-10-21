@@ -48,9 +48,7 @@ const openaiService = {
             content: 'Por que o frango atravessou a rua?',
         }
 
-        return {
-            messages: [systemMessage, userMessage, assistantMessage],
-        }
+        return [systemMessage, userMessage, assistantMessage]
     },
 }
 
