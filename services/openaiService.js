@@ -43,11 +43,6 @@ const openaiService = {
             content: message,
         }))
 
-        const assistantMessage = {
-            role: 'assistant',
-            content: 'Por que o frango atravessou a rua?',
-        }
-
         return userMessages.concat([systemMessage, assistantMessage])
     },
 }
