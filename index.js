@@ -1,15 +1,16 @@
-const { PORT } = require('./env');
-const express = require('express');
-const app = express();
+const { PORT } = require('./env')
+const express = require('express')
 
-app.use(express.json());
+const app = express()
 
-const completionsRoutes = require('./routes/completions');
-const conversationsRoutes = require('./routes/conversations');
+app.use(express.json())
 
-app.use('/completions', completionsRoutes);
-app.use('/conversations', conversationsRoutes);
+const completionsRoutes = require('./routes/completions')
+const instructionsRoutes = require('./routes/instructions')
+const conversationsRoutes = require('./routes/conversations')
 
-app.listen(PORT, () => {
-    console.log(`Servidor Express rodando na porta ${PORT}`);
-});
+app.use('/completions', completionsRoutes)
+app.use('/instructions', instructionsRoutes)
+app.use('/conversations', conversationsRoutes)
+
+app.listen(PORT, () => console.log(`Running in ${PORT}`))
