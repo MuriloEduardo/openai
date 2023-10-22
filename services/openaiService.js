@@ -43,7 +43,7 @@ const openaiService = {
             content: message,
         }))
 
-        return userMessages.concat([systemMessage, assistantMessage])
+        return [...userMessages, systemMessage]
     },
 }
 
