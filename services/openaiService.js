@@ -41,7 +41,7 @@ const openaiService = {
             content: message,
         }))
 
-        return [...userMessages, ...instructions]
+        return [...instructions, ...userMessages]
     },
 }
 
