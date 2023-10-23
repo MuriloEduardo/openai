@@ -33,8 +33,8 @@ const openaiService = {
             throw error
         }
     },
-    mountConversationPrompt: (messages) => {
-        const instructions = find(InstructionModel)
+    mountConversationPrompt: async (messages) => {
+        const instructions = await find(InstructionModel)
 
         const userMessages = messages.map(message => ({
             role: 'user',
