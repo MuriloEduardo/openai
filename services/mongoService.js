@@ -14,13 +14,13 @@ const { MONGO_URL } = require('../env');
   }
 })()
 
-const insert = (model, data) => {
+const insert = async (model, data) => {
   const newDoc = new model(data)
-  return newDoc.save()
+  return await newDoc.save()
 }
 
-const find = (model, filters = {}) => {
-  return model.find(filters).exec()
+const find = async (model, filters = {}) => {
+  return await model.find(filters).exec()
 }
 
 module.exports = { insert, find }
