@@ -1,6 +1,6 @@
 const express = require('express')
-const { insert } = require('../services/mongoService')
 const InstructionModel = require('../models/Instruction')
+const { insert, find } = require('../services/mongoService')
 
 const router = express.Router()
 
@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/', async (req, res) => {
-    const instructions = await InstructionModel.find({})
+    const instructions = await find(InstructionModel)
 
     res.json(instructions)
 })
