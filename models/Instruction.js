@@ -7,6 +7,7 @@ const instructionSchema = new mongoose.Schema({
         enum: ['system', 'assistant']
     },
     content: String,
+    identifier: String,
 });
 
 const InstructionModel = mongoose.model('instructions', instructionSchema);

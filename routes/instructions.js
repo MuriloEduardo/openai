@@ -5,9 +5,13 @@ const InstructionModel = require('../models/Instruction')
 const router = express.Router()
 
 router.post('/', async (req, res) => {
-    const { role, content } = req.body
+    const { role, content, identifier } = req.body
 
-    await insert(InstructionModel, { role, content })
+    await insert(InstructionModel, {
+        role,
+        content,
+        identifier,
+    })
 
     res.sendStatus(201)
 })
