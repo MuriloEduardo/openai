@@ -19,8 +19,10 @@ const insert = async (model, data) => {
   return await newDoc.save()
 }
 
-const find = async (model, filters = {}) => {
-  return await model.find(filters).exec()
+const find = async (model, filters = {}, fields = {}) => {
+  return await model
+    .find(filters, fields)
+    .exec()
 }
 
 module.exports = { insert, find }

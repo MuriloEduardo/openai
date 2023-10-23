@@ -34,7 +34,7 @@ const openaiService = {
         }
     },
     mountConversationPrompt: async (messages) => {
-        const instructions = await find(InstructionModel)
+        const instructions = await find(InstructionModel, {}, { role: 1, content: 1 })
 
         console.log('mountConversationPrompt', instructions);
 
