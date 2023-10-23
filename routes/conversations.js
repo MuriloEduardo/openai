@@ -7,7 +7,7 @@ router.post('/', async (req, res) => {
     const { message } = req.body
 
     try {
-        const prompt = openaiService.mountConversationPrompt(message)
+        const prompt = await openaiService.mountConversationPrompt(message)
 
         const response = await openaiService.createConversation(prompt)
 
